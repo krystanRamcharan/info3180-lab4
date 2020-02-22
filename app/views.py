@@ -36,7 +36,7 @@ def upload():
             filename = secure_filename(photo.filename)
             photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
             flash('File Saved', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('upload',filename=filename))
         
 
     return render_template('upload.html',form=photoform)
