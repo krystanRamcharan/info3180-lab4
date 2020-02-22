@@ -31,7 +31,7 @@ def upload():
     if not session.get('logged_in'):
         abort(401)
         photoform = UploadForm()
-    if request.method == 'POST' and photo.validate_on_submit():
+    if request.method == 'POST' and photoform.validate_on_submit():
         
         photo = photoform.photo.data 
         filename = secure_filename(photo.filename)
