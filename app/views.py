@@ -30,11 +30,10 @@ def about():
 def upload():
     if not session.get('logged_in'):
         abort(401)
-
-    # Instantiate your form class
-
-    # Validate file upload on submit
-    if request.method == 'POST':
+        photo=UploadForm()
+    if request.method == 'POST' and photo.validate_on_submit():
+        file = uploadform.photo.data
+        filename = secure_filename(photo.filename)
         # Get file data and save to your uploads folder
 
         flash('File Saved', 'success')
