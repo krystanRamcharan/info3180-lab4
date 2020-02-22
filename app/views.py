@@ -30,17 +30,20 @@ def about():
 def upload():
     if not session.get('logged_in'):
         abort(401)
-        photo=UploadForm()
+        
+        picture=UploadForm()
     if request.method == 'POST' and photo.validate_on_submit():
-        photo = photoform.photo.data 
-        file = uploadform.photo.data
+        
+        photo = picture.photo.data 
         filename = secure_filename(photo.filename)
-        # Get file data and save to your uploads folder
-
+        
+        photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
+        
         flash('File Saved', 'success')
+        
         return redirect(url_for('home'))
 
-    return render_template('upload.html')
+    return render_template('upload.html',form=picture)
 
 
 @app.route('/login', methods=['POST', 'GET'])
