@@ -30,11 +30,10 @@ def about():
 def upload():
     if not session.get('logged_in'):
         abort(401)
-        
-        picture=UploadForm()
+        photoform = UploadForm()
     if request.method == 'POST' and photo.validate_on_submit():
         
-        photo = picture.photo.data 
+        photo = photoform.photo.data 
         filename = secure_filename(photo.filename)
         
         photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
@@ -43,7 +42,7 @@ def upload():
         
         return redirect(url_for('home'))
 
-    return render_template('upload.html',form=picture)
+    return render_template('upload.html',form=photoform)
 
 
 @app.route('/login', methods=['POST', 'GET'])
