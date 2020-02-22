@@ -4,7 +4,7 @@ from wtforms import StringField
 from wtforms.validators import DataRequired, Email
 
 
-class UploadForm(FlaskFrom):
+class UploadForm(FlaskForm):
   photo = FileField('Photo', validators=[
         FileRequired(),
         FileAllowed(['jpg', 'png', 'Images only!'])
