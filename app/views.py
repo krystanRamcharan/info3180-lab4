@@ -32,11 +32,11 @@ def upload():
     if not session.get('logged_in'):
         abort(401)
         if request.method == 'POST' and photoform.validate_on_submit():
-        photo = photoform.photo.data 
-        filename = secure_filename(photo.filename)
-        photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
-        flash('File Saved', 'success')
-        return redirect(url_for('home'))
+            photo = photoform.photo.data 
+            filename = secure_filename(photo.filename)
+            photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
+            flash('File Saved', 'success')
+            return redirect(url_for('home'))
 
     return render_template('upload.html',form=photoform)
 
