@@ -32,6 +32,7 @@ def upload():
         abort(401)
         photo=UploadForm()
     if request.method == 'POST' and photo.validate_on_submit():
+         photo = photoform.photo.data 
         file = uploadform.photo.data
         filename = secure_filename(photo.filename)
         # Get file data and save to your uploads folder
