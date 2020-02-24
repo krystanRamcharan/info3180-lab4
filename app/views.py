@@ -40,7 +40,7 @@ def upload():
             return redirect(url_for('uploaded_file', filename=filename))
         
 
-    return render_template('upload.html',form=photoform)
+    return render_template('show_photo.html',form=photoform)
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
