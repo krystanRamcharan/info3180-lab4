@@ -33,7 +33,7 @@ def upload():
     if not session.get('logged_in'):
         abort(401)
         if request.method == 'POST' and photoform.validate_on_submit():
-            photo = photoform.photo.data 
+            photo = request.files['photo']
             filename = secure_filename(photo.filename)
             photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename ))
             flash('File Saved', 'success')
